@@ -1,0 +1,17 @@
+{
+    "name": "solutions/blog",
+    "description": "Blog module with posts and categories",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Solutions\\Blog\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Solutions\\Blog\\Providers\\BlogServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,20 @@
+{
+  "name": "solutions/contact",
+  "description": "Contact package (admin inbox + front submit).",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Solutions\\Contact\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Solutions\\Contact\\Providers\\ContactServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

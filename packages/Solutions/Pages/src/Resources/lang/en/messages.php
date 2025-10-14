@@ -1,0 +1,43 @@
+<?php
+return [
+    'pages'              => 'Pages',
+    'back'               => 'Back',
+    'add'                => 'Add',
+    'edit'               => 'Edit',
+    'edit_page'          => 'Edit Page',
+    'back'               => 'Back',
+    'save'               => 'Save',
+    'update'             => 'Update',
+    'cancel'             => 'Cancel',
+    'actions'            => 'Actions',
+    'status'             => 'Status',
+    'active'             => 'Active',
+    'inactive'           => 'Inactive',
+    'toggle_status'      => 'Toggle status',
+    'toggle_hint'        => 'Enable/disable showing this header on the frontend.',
+    'order'              => 'Order',
+    'save_order'         => 'Save Order',
+    'item_order'         => 'Item Order #:id',
+    'of'                 => 'of',
+    'drag_drop_hint'     => 'Drag and drop rows to reorder.',
+    'delete'             => 'Delete',
+    'confirm_delete'     => 'Are you sure you want to delete?',
+
+    'slug'               => 'Slug',
+    'enter_slug'         => 'Enter slug',
+    'image'              => 'Image',
+    'image_help'         => 'Upload an image to use in the page (optional).',
+    'description'        => 'Description',
+
+    'description_en'     => 'Description (English)',
+    'description_ar'     => 'Description (Arabic)',
+    'enter_description_en' => 'Enter description in English',
+    'enter_description_ar' => 'Enter description in Arabic',
+
+    'title'               => 'Title',
+    'title_en'            => 'Title (English)',
+    'title_ar'            => 'Title (Arabic)',
+    'enter_title_en'      => 'Enter title in English',
+    'enter_title_ar'      => 'Enter title in Arabic',
+
+];

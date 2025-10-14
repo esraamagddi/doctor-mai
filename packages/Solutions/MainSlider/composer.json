@@ -1,0 +1,15 @@
+{
+    "name": "solutions/mainslider",
+    "autoload": {
+        "psr-4": {
+            "Solutions\\MainSlider\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Solutions\\MainSlider\\Providers\\MainSliderServiceProvider"
+            ]
+        }
+    }
+}

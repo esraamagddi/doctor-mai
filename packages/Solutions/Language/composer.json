@@ -1,0 +1,15 @@
+{
+    "name": "solutions/language",
+    "autoload": {
+        "psr-4": {
+            "Solutions\\Language\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Solutions\\Language\\Providers\\LanguageServiceProvider"
+            ]
+        }
+    }
+}

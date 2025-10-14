@@ -1,0 +1,18 @@
+{
+  "name": "solutions/userprofile",
+  "description": "User Profile module similar to Team (name, phone, avatar, password)",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Solutions\\UserProfile\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Solutions\\UserProfile\\Providers\\UserProfileServiceProvider"
+      ]
+    }
+  },
+  "license": "MIT"
+}

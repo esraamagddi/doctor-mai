@@ -1,0 +1,15 @@
+{
+  "name": "solutions/faqs",
+  "autoload": {
+    "psr-4": {
+      "Solutions\\Faqs\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Solutions\\Faqs\\Providers\\FaqsServiceProvider"
+      ]
+    }
+  }
+}

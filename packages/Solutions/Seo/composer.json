@@ -1,0 +1,23 @@
+{
+  "name": "solutions/seo",
+  "description": "SEO management package (meta, OG/Twitter, JSON-LD, hreflang, sitemaps) for Solutions.",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "Solutions\\Seo\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Solutions\\Seo\\Providers\\SeoServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php": ">=8.1"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

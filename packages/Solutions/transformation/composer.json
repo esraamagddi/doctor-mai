@@ -1,0 +1,15 @@
+{
+    "name": "solutions/transformation",
+    "autoload": {
+        "psr-4": {
+            "Solutions\\Transformation\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Solutions\\Transformation\\Providers\\TransformationServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,19 @@
+{
+  "name": "solutions/sitesetting",
+  "type": "library",
+  "description": "Global site settings (name, logos, socials, analytics, pixels, etc.)",
+  "autoload": {
+    "psr-4": {
+      "Solutions\\SiteSetting\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Solutions\\SiteSetting\\Providers\\SiteSettingServiceProvider"
+      ]
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

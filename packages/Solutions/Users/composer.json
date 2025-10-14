@@ -1,0 +1,17 @@
+{
+    "name": "solutions/users",
+    "description": "Users management module (CRUD) with image upload",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Solutions\\Users\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Solutions\\Users\\Providers\\UsersServiceProvider"
+            ]
+        }
+    }
+}

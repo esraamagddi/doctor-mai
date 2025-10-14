@@ -1,0 +1,15 @@
+{
+    "name": "solutions/testimonial",
+    "autoload": {
+        "psr-4": {
+            "Solutions\\Testimonial\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Solutions\\Testimonial\\Providers\\TestimonialServiceProvider"
+            ]
+        }
+    }
+}

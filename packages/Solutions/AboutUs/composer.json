@@ -1,0 +1,15 @@
+{
+    "name": "solutions/aboutus",
+    "autoload": {
+        "psr-4": {
+            "Solutions\\AboutUs\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Solutions\\AboutUs\\Providers\\AboutUsServiceProvider"
+            ]
+        }
+    }
+}

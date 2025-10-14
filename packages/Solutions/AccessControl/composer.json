@@ -1,0 +1,17 @@
+{
+    "name": "solutions/accesscontrol",
+    "description": "Roles & permissions module with dynamic module permissions",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Solutions\\AccessControl\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Solutions\\AccessControl\\Providers\\AccessControlServiceProvider"
+            ]
+        }
+    }
+}

@@ -1,0 +1,15 @@
+{
+    "name": "solutions/services",
+    "autoload": {
+        "psr-4": {
+            "Solutions\\Services\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Solutions\\Services\\Providers\\ServicesProvider"
+            ]
+        }
+    }
+}

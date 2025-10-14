@@ -1,0 +1,15 @@
+{
+    "name": "solutions/media",
+    "autoload": {
+        "psr-4": {
+            "Solutions\\Media\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Solutions\\Media\\Providers\\MediaServiceProvider"
+            ]
+        }
+    }
+}

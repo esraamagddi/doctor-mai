@@ -1,0 +1,172 @@
+{
+    "name": "laravel/laravel",
+    "type": "project",
+    "description": "The skeleton application for the Laravel framework.",
+    "keywords": [
+        "laravel",
+        "framework"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": "^8.1",
+        "guzzlehttp/guzzle": "^7.2",
+        "laravel/framework": "^10.10",
+        "laravel/sanctum": "^3.3",
+        "laravel/tinker": "^2.8",
+        "solutions/aboutus": "dev-main",
+        "solutions/accesscontrol": "dev-main",
+        "solutions/appointments": "dev-main",
+        "solutions/blog": "dev-main",
+        "solutions/clients": "dev-main",
+        "solutions/contact": "dev-main",
+        "solutions/core": "*",
+        "solutions/faqs": "dev-main",
+        "solutions/founder": "dev-main",
+        "solutions/language": "dev-main",
+        "solutions/mainslider": "dev-main",
+        "solutions/media": "dev-main",
+        "solutions/navbar": "dev-main",
+        "solutions/pages": "dev-main",
+        "solutions/section-headers": "dev-main",
+        "solutions/seo": "dev-main",
+        "solutions/services": "dev-main",
+        "solutions/sitesetting": "dev-main",
+        "solutions/statistics": "dev-main",
+        "solutions/team": "dev-main",
+        "solutions/testimonial": "dev-main",
+        "solutions/transformation": "dev-main",
+        "solutions/userprofile": "dev-main",
+        "solutions/users": "dev-main"
+    },
+    "require-dev": {
+        "fakerphp/faker": "^1.9.1",
+        "laravel/pint": "^1.0",
+        "laravel/sail": "^1.18",
+        "mockery/mockery": "^1.4.4",
+        "nunomaduro/collision": "^7.0",
+        "phpunit/phpunit": "^10.1",
+        "spatie/laravel-ignition": "^2.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/",
+            "Database\\Factories\\": "database/factories/",
+            "Database\\Seeders\\": "database/seeders/",
+            "Solutions\\": "packages/Solutions/"
+        },
+        "files": [
+            "app/helpers/helpers.php"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover --ansi"
+        ],
+        "post-update-cmd": [
+            "@php artisan vendor:publish --tag=laravel-assets --ansi --force"
+        ],
+        "post-root-package-install": [
+            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "@php artisan key:generate --ansi"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": []
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "php-http/discovery": true
+        }
+    },
+    "repositories": [
+    {
+        "type": "path",
+        "url": "packages/Solutions/Core"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/UserProfile"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Users"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/AccessControl"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Navbar"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Blog"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Team"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Testimonial"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Language"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Faqs"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Appointments"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Clients"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/MainSlider"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/AboutUs"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Services"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Media"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/SectionHeaders"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Seo"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/SiteSetting"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Contact"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Founder"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Statistics"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Pages"
+    },{
+        "type": "path",
+        "url": "packages/Solutions/Transformation"
+    }
+],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
