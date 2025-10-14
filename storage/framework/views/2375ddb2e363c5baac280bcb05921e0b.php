@@ -1,20 +1,22 @@
-@php
+<?php
 $isRTL = app()->getLocale() == 'ar';
-@endphp
+?>
 <!-- Services Section for Home Page -->
 <section class="relative py-20 overflow-hidden bg-base">
     <!-- Decorative Circles -->
-    <div class="absolute border-2 border-secondary rounded-full top-20 {{ $isRTL ? 'right-20' : 'left-20' }} w-80 h-80 opacity-50"></div>
-    <div class="absolute border-2 border-secondary rounded-full bottom-20 {{ $isRTL ? 'left-20' : 'right-20' }} w-60 h-60 opacity-55"></div>
+    <div class="absolute border-2 border-secondary rounded-full top-20 <?php echo e($isRTL ? 'right-20' : 'left-20'); ?> w-80 h-80 opacity-50"></div>
+    <div class="absolute border-2 border-secondary rounded-full bottom-20 <?php echo e($isRTL ? 'left-20' : 'right-20'); ?> w-60 h-60 opacity-55"></div>
 
     <div class="container relative z-10 px-6 mx-auto max-w-7xl">
         <!-- Section Header -->
-        <div class="mb-16 {{ $isRTL ? 'text-right' : 'text-left' }}">
+        <div class="mb-16 <?php echo e($isRTL ? 'text-right' : 'text-left'); ?>">
             <h2 class="mb-4 text-4xl font-bold text-black lg:text-5xl">
-                {{ getLocalized(getSectionHeaders('services')['title']) ?? '' }}
+                <?php echo e(getLocalized(getSectionHeaders('services')['title']) ?? ''); ?>
+
             </h2>
             <p class="max-w-2xl text-lg text-black">
-                {{ getLocalized(getSectionHeaders('services')['description']) ?? '' }}
+                <?php echo e(getLocalized(getSectionHeaders('services')['description']) ?? ''); ?>
+
             </p>
         </div>
 
@@ -37,30 +39,33 @@ $isRTL = app()->getLocale() == 'ar';
             <!-- Swiper -->
             <div class="swiper home-services-swiper py-8">
                 <div class="swiper-wrapper">
-                    @foreach($services as $key => $record)
+                    <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="swiper-slide">
                         <div class="service-card">
                             <div class="service-image">
-                                <img src="{{ asset('storage/' . $record->image) }}"
-                                    alt="{{ getLocalized($record->name) }}"
+                                <img src="<?php echo e(asset('storage/' . $record->image)); ?>"
+                                    alt="<?php echo e(getLocalized($record->name)); ?>"
                                     loading="lazy">
                             </div>
                             <div class="service-content">
                                 <div class="service-text">
                                     <div class="service-title">
-                                        {{ getLocalized($record->name) }}
+                                        <?php echo e(getLocalized($record->name)); ?>
+
                                     </div>
                                     <div class="service-description">
-                                        {!! Str::limit(strip_tags(getLocalized($record->description)), 100) !!}
+                                        <?php echo Str::limit(strip_tags(getLocalized($record->description)), 100); ?>
+
                                     </div>
                                 </div>
                                 <div class="service-number">
-                                    {{ str_pad($key + 1, 2, '0', STR_PAD_LEFT) }}
+                                    <?php echo e(str_pad($key + 1, 2, '0', STR_PAD_LEFT)); ?>
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
 
@@ -68,4 +73,4 @@ $isRTL = app()->getLocale() == 'ar';
             <div class="home-services-pagination"></div>
         </div>
     </div>
-</section>
+</section><?php /**PATH D:\Work\corpintech\doctor-mai\resources\views/front/home/services.blade.php ENDPATH**/ ?>

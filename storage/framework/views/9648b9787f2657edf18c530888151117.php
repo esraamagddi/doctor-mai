@@ -1,37 +1,35 @@
-@extends('layouts.front.app')
-
-@php
+<?php
 $seo = \App\Http\Controllers\SeoController::index('services');
 $isRTL = app()->getLocale() == 'ar';
-@endphp
+?>
 
-@section('title'){{ $seo['meta_title'][app()->getLocale()] ?? '' }}@endsection
-@section('description'){{ $seo['meta_description'][app()->getLocale()] ?? '' }}@endsection
-@section('og_title'){{ $seo['meta_title'][app()->getLocale()] ?? '' }}@endsection
-@section('og_description'){{ $seo['meta_description'][app()->getLocale()] ?? '' }}@endsection
-@section('og_url'){{ $seo['canonical'] }}@endsection
-@section('og_image'){{ asset('storage/' . $seo['og_image']) }}@endsection
-@section('twitter_image'){{ asset('storage/' . $seo['og_image']) }}@endsection
-@section('twitter_title'){{ $seo['meta_title'][app()->getLocale()] ?? '' }}@endsection
-@section('twitter_description'){{ $seo['meta_description'][app()->getLocale()] ?? '' }}@endsection
-@section('canonical'){{ $seo['canonical'] }}@endsection
+<?php $__env->startSection('title'); ?><?php echo e($seo['meta_title'][app()->getLocale()] ?? ''); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('description'); ?><?php echo e($seo['meta_description'][app()->getLocale()] ?? ''); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('og_title'); ?><?php echo e($seo['meta_title'][app()->getLocale()] ?? ''); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('og_description'); ?><?php echo e($seo['meta_description'][app()->getLocale()] ?? ''); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('og_url'); ?><?php echo e($seo['canonical']); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('og_image'); ?><?php echo e(asset('storage/' . $seo['og_image'])); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('twitter_image'); ?><?php echo e(asset('storage/' . $seo['og_image'])); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('twitter_title'); ?><?php echo e($seo['meta_title'][app()->getLocale()] ?? ''); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('twitter_description'); ?><?php echo e($seo['meta_description'][app()->getLocale()] ?? ''); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('canonical'); ?><?php echo e($seo['canonical']); ?><?php $__env->stopSection(); ?>
 
-@section('meta')
+<?php $__env->startSection('meta'); ?>
 <style>
 
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <script type="application/ld+json">
 {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "name": "{{ Setting()->site_name[app()->getLocale()] ?? '' }}",
-    "url": "{{ url('/') }}",
-    "logo": "{{ asset('storage/' . Setting()->logo_light) }}",
-    "description": "{{ Setting()->site_description[app()->getLocale()] ?? '' }}"
+    "name": "<?php echo e(Setting()->site_name[app()->getLocale()] ?? ''); ?>",
+    "url": "<?php echo e(url('/')); ?>",
+    "logo": "<?php echo e(asset('storage/' . Setting()->logo_light)); ?>",
+    "description": "<?php echo e(Setting()->site_description[app()->getLocale()] ?? ''); ?>"
 }
 </script>
 
@@ -39,14 +37,14 @@ $isRTL = app()->getLocale() == 'ar';
 {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "url": "{{ url('/') }}",
-    "name": "{{ Setting()->site_name[app()->getLocale()] ?? '' }}",
+    "url": "<?php echo e(url('/')); ?>",
+    "name": "<?php echo e(Setting()->site_name[app()->getLocale()] ?? ''); ?>",
     "publisher": {
         "@type": "Organization",
-        "name": "{{ Setting()->site_name[app()->getLocale()] ?? '' }}",
+        "name": "<?php echo e(Setting()->site_name[app()->getLocale()] ?? ''); ?>",
         "logo": {
             "@type": "ImageObject",
-            "url": "{{ asset('storage/' . Setting()->logo_light) }}"
+            "url": "<?php echo e(asset('storage/' . Setting()->logo_light)); ?>"
         }
     }
 }
@@ -63,10 +61,12 @@ $isRTL = app()->getLocale() == 'ar';
     <div class="container relative z-10 px-6 mx-auto max-w-7xl">
         <div class="mb-16 text-center">
             <h1 class="mb-6 text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl">
-                {{ getSectionHeaders('services')->title[app()->getLocale()] ?? '' }}
+                <?php echo e(getSectionHeaders('services')->title[app()->getLocale()] ?? ''); ?>
+
             </h1>
             <p class="max-w-3xl mx-auto text-lg text-gray-600 md:text-xl">
-                {{ getSectionHeaders('services')->description[app()->getLocale()] ?? '' }}
+                <?php echo e(getSectionHeaders('services')->description[app()->getLocale()] ?? ''); ?>
+
             </p>
         </div>
     </div>
@@ -74,16 +74,18 @@ $isRTL = app()->getLocale() == 'ar';
 
 <!-- Services Section -->
 <section class="relative py-20 overflow-hidden bg-base">
-    <div class="absolute border-2 border-secondary rounded-full top-20 {{ $isRTL ? 'right-20' : 'left-20' }} w-80 h-80 opacity-50"></div>
-    <div class="absolute border-2 border-secondary rounded-full bottom-20 {{ $isRTL ? 'left-20' : 'right-20' }} w-60 h-60 opacity-55"></div>
+    <div class="absolute border-2 border-secondary rounded-full top-20 <?php echo e($isRTL ? 'right-20' : 'left-20'); ?> w-80 h-80 opacity-50"></div>
+    <div class="absolute border-2 border-secondary rounded-full bottom-20 <?php echo e($isRTL ? 'left-20' : 'right-20'); ?> w-60 h-60 opacity-55"></div>
 
     <div class="container relative z-10 px-6 mx-auto max-w-7xl">
-        <div class="mb-16 {{ $isRTL ? 'text-right' : 'text-left' }}">
+        <div class="mb-16 <?php echo e($isRTL ? 'text-right' : 'text-left'); ?>">
             <h2 class="mb-4 text-4xl font-bold text-black lg:text-5xl">
-                {{ getLocalized(getSectionHeaders('services')['title']) ?? '' }}
+                <?php echo e(getLocalized(getSectionHeaders('services')['title']) ?? ''); ?>
+
             </h2>
             <p class="max-w-2xl text-lg text-black">
-                {{ getLocalized(getSectionHeaders('services')['description']) ?? '' }}
+                <?php echo e(getLocalized(getSectionHeaders('services')['description']) ?? ''); ?>
+
             </p>
         </div>
 
@@ -104,30 +106,33 @@ $isRTL = app()->getLocale() == 'ar';
 
             <div class="swiper services-swiper">
                 <div class="swiper-wrapper">
-                    @foreach($services as $key => $record)
+                    <?php $__currentLoopData = $services; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <div class="swiper-slide">
                         <div class="service-card">
                             <div class="service-image">
-                                <img src="{{ asset('storage/' . $record->image) }}" 
-                                     alt="{{ getLocalized($record->name) }}"
+                                <img src="<?php echo e(asset('storage/' . $record->image)); ?>" 
+                                     alt="<?php echo e(getLocalized($record->name)); ?>"
                                      loading="lazy">
                             </div>
                             <div class="service-content">
                                 <div class="service-text">
                                     <div class="service-title">
-                                        {{ getLocalized($record->name) }}
+                                        <?php echo e(getLocalized($record->name)); ?>
+
                                     </div>
                                     <div class="service-description">
-                                        {!! Str::limit(strip_tags(getLocalized($record->description)), 100) !!}
+                                        <?php echo Str::limit(strip_tags(getLocalized($record->description)), 100); ?>
+
                                     </div>
                                 </div>
                                 <div class="service-number">
-                                    {{ str_pad($key + 1, 2, '0', STR_PAD_LEFT) }}
+                                    <?php echo e(str_pad($key + 1, 2, '0', STR_PAD_LEFT)); ?>
+
                                 </div>
                             </div>
                         </div>
                     </div>
-                    @endforeach
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </div>
             </div>
             <div class="services-pagination"></div>
@@ -233,4 +238,5 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.front.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Work\corpintech\doctor-mai\resources\views/front/services/index.blade.php ENDPATH**/ ?>

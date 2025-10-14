@@ -1,45 +1,44 @@
-@extends('layouts.front.app')
-@php
+<?php
 $seo = \App\Http\Controllers\SeoController::index('home');
-@endphp
-@section('title'){{ $seo['meta_title'][app()->getLocale()] }}@endsection
-@section('description'){{ $seo['meta_description'][app()->getLocale()] }}@endsection
-@section('og_title'){{ $seo['meta_title'][app()->getLocale()] }}@endsection
-@section('og_description'){{ $seo['meta_description'][app()->getLocale()] }}@endsection
-@section('og_url'){{ $seo['canonical'] }}@endsection
-@section('og_image'){{ asset('storage/' . $seo['og_image']) }}@endsection
-@section('twitter_image'){{ asset('storage/' . $seo['og_image']) }}@endsection
-@section('twitter_title'){{ $seo['meta_title'][app()->getLocale()] }}@endsection
-@section('twitter_description'){{ $seo['meta_description'][app()->getLocale()] }}@endsection
-@section('canonical'){{ $seo['canonical'] }}@endsection
-@section('meta')
-@endsection
+?>
+<?php $__env->startSection('title'); ?><?php echo e($seo['meta_title'][app()->getLocale()]); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('description'); ?><?php echo e($seo['meta_description'][app()->getLocale()]); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('og_title'); ?><?php echo e($seo['meta_title'][app()->getLocale()]); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('og_description'); ?><?php echo e($seo['meta_description'][app()->getLocale()]); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('og_url'); ?><?php echo e($seo['canonical']); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('og_image'); ?><?php echo e(asset('storage/' . $seo['og_image'])); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('twitter_image'); ?><?php echo e(asset('storage/' . $seo['og_image'])); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('twitter_title'); ?><?php echo e($seo['meta_title'][app()->getLocale()]); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('twitter_description'); ?><?php echo e($seo['meta_description'][app()->getLocale()]); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('canonical'); ?><?php echo e($seo['canonical']); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('meta'); ?>
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 
 <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "{{ Setting()->site_name[app()->getLocale()] ?? '' }}",
-        "url": "{{ url('/') }}",
-        "logo": "{{ asset('storage/' . Setting()->logo_light) }}",
-        "description": "{{ Setting()->site_description[app()->getLocale()] ?? '' }}"
+        "name": "<?php echo e(Setting()->site_name[app()->getLocale()] ?? ''); ?>",
+        "url": "<?php echo e(url('/')); ?>",
+        "logo": "<?php echo e(asset('storage/' . Setting()->logo_light)); ?>",
+        "description": "<?php echo e(Setting()->site_description[app()->getLocale()] ?? ''); ?>"
     }
 </script>
 <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "url": "{{ url('/') }}",
-        "name": "{{ Setting()->site_name[app()->getLocale()] ?? '' }}",
+        "url": "<?php echo e(url('/')); ?>",
+        "name": "<?php echo e(Setting()->site_name[app()->getLocale()] ?? ''); ?>",
         "publisher": {
             "@type": "Organization",
-            "name": "{{ Setting()->site_name[app()->getLocale()] ?? '' }}",
+            "name": "<?php echo e(Setting()->site_name[app()->getLocale()] ?? ''); ?>",
             "logo": {
                 "@type": "ImageObject",
-                "url": "{{ asset('storage/' . Setting()->logo_light) }}"
+                "url": "<?php echo e(asset('storage/' . Setting()->logo_light)); ?>"
             }
         }
     }
@@ -56,10 +55,12 @@ $seo = \App\Http\Controllers\SeoController::index('home');
     <div class="container relative z-10 px-6 mx-auto max-w-7xl">
         <div class="mb-16 text-center">
             <h1 class="mb-6 text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl">
-                {{ getLocalized(getSectionHeaders('contact')['title']) }}
+                <?php echo e(getLocalized(getSectionHeaders('contact')['title'])); ?>
+
             </h1>
             <p class="max-w-3xl mx-auto text-lg text-gray-600 md:text-xl">
-                {{ getLocalized(getSectionHeaders('contact')['description']) }}
+                <?php echo e(getLocalized(getSectionHeaders('contact')['description'])); ?>
+
             </p>
         </div>
     </div>
@@ -75,7 +76,8 @@ $seo = \App\Http\Controllers\SeoController::index('home');
             <div class="space-y-8">
                 <div>
                     <h2 class="mb-6 text-3xl font-bold text-gray-900">
-                        {{ __('contact.info_heading') }}
+                        <?php echo e(__('contact.info_heading')); ?>
+
                     </h2>
                 </div>
 
@@ -92,10 +94,12 @@ $seo = \App\Http\Controllers\SeoController::index('home');
                         </div>
                         <div>
                             <h3 class="mb-1 text-lg font-semibold text-gray-900">
-                                {{ __('contact.our_location') }}
+                                <?php echo e(__('contact.our_location')); ?>
+
                             </h3>
                             <p class="text-gray-600">
-                                {{ Setting()->address[app()->getLocale()] ?? '' }}
+                                <?php echo e(Setting()->address[app()->getLocale()] ?? ''); ?>
+
                             </p>
                         </div>
                     </div>
@@ -110,10 +114,11 @@ $seo = \App\Http\Controllers\SeoController::index('home');
                         </div>
                         <div>
                             <h3 class="mb-1 text-lg font-semibold text-gray-900">
-                                {{ __('contact.phone_label') }}
+                                <?php echo e(__('contact.phone_label')); ?>
+
 
                             </h3>
-                            <p class="text-gray-600">{{ Setting()->phones ?? '' }}</p>
+                            <p class="text-gray-600"><?php echo e(Setting()->phones ?? ''); ?></p>
                         </div>
                     </div>
 
@@ -127,9 +132,10 @@ $seo = \App\Http\Controllers\SeoController::index('home');
                         </div>
                         <div>
                             <h3 class="mb-1 text-lg font-semibold text-gray-900">
-                                {{ __('contact.email_label') }}
+                                <?php echo e(__('contact.email_label')); ?>
+
                             </h3>
-                            <p class="text-gray-600">{{ Setting()->contact_emails ?? '' }}</p>
+                            <p class="text-gray-600"><?php echo e(Setting()->contact_emails ?? ''); ?></p>
                         </div>
                     </div>
 
@@ -143,10 +149,12 @@ $seo = \App\Http\Controllers\SeoController::index('home');
                         </div>
                         <div>
                             <h3 class="mb-1 text-lg font-semibold text-gray-900">
-                                {{ __('contact.working_hours_label') }}
+                                <?php echo e(__('contact.working_hours_label')); ?>
+
                             </h3>
                             <p class="text-gray-600">
-                                {{ Setting()->working_hours[app()->getLocale()] ?? '' }}
+                                <?php echo e(Setting()->working_hours[app()->getLocale()] ?? ''); ?>
+
                             </p>
                         </div>
                     </div>
@@ -160,57 +168,90 @@ $seo = \App\Http\Controllers\SeoController::index('home');
 
                 <!-- Contact Form -->
                 <div class="p-6 shadow-inner bg-base/40 backdrop-blur-lg rounded-2xl">
-                    <form class="space-y-6" method="POST" action="{{ route('front.contact.store') }}">
-                        @csrf
-                        <input type="hidden" name="_lang" value="{{ session('front_locale') ?? app()->getLocale() }}">
+                    <form class="space-y-6" method="POST" action="<?php echo e(route('front.contact.store')); ?>">
+                        <?php echo csrf_field(); ?>
+                        <input type="hidden" name="_lang" value="<?php echo e(session('front_locale') ?? app()->getLocale()); ?>">
 
                         <div>
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-700">
-                                {{ __('contact.full_name') }}
+                                <?php echo e(__('contact.full_name')); ?>
+
                             </label>
                             <input type="text" id="name" name="name"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                                value="{{ old('name') }}" required
-                                placeholder="{{ __('contact.full_name_placeholder') }}">
-                            @error('name') <p class="text-red-600 text-sm mt-2">{{ $message }}</p> @enderror
+                                value="<?php echo e(old('name')); ?>" required
+                                placeholder="<?php echo e(__('contact.full_name_placeholder')); ?>">
+                            <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <p class="text-red-600 text-sm mt-2"><?php echo e($message); ?></p> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div>
                             <label for="email" class="block mb-2 text-sm font-medium text-gray-700">
-                                {{ __('contact.email') }}
+                                <?php echo e(__('contact.email')); ?>
+
                             </label>
                             <input type="email" id="email" name="email"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                                value="{{ old('email') }}"
-                                placeholder="{{ __('contact.email_placeholder') }}" required />
-                            @error('email') <p class="text-red-600 text-sm mt-2">{{ $message }}</p> @enderror
+                                value="<?php echo e(old('email')); ?>"
+                                placeholder="<?php echo e(__('contact.email_placeholder')); ?>" required />
+                            <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <p class="text-red-600 text-sm mt-2"><?php echo e($message); ?></p> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div>
                             <label for="phone" class="block mb-2 text-sm font-medium text-gray-700">
-                                {{ __('contact.phone') }}
+                                <?php echo e(__('contact.phone')); ?>
+
                             </label>
                             <input type="tel" id="phone" name="phone"
-                                value="{{ old('phone') }}"
-                                placeholder="{{ __('contact.phone_placeholder') }}"
+                                value="<?php echo e(old('phone')); ?>"
+                                placeholder="<?php echo e(__('contact.phone_placeholder')); ?>"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
                                 required />
-                            @error('phone') <p class="text-red-600 text-sm mt-2">{{ $message }}</p> @enderror
+                            <?php $__errorArgs = ['phone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <p class="text-red-600 text-sm mt-2"><?php echo e($message); ?></p> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <div>
                             <label for="message" class="block mb-2 text-sm font-medium text-gray-700">
-                                {{ __('contact.message') }}
+                                <?php echo e(__('contact.message')); ?>
+
                             </label>
                             <textarea id="message" name="message" rows="5"
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary"
-                                placeholder="{{ __('contact.message_placeholder') }}" required>{{ old('message') }}</textarea>
-                            @error('message') <p class="text-red-600 text-sm mt-2">{{ $message }}</p> @enderror
+                                placeholder="<?php echo e(__('contact.message_placeholder')); ?>" required><?php echo e(old('message')); ?></textarea>
+                            <?php $__errorArgs = ['message'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <p class="text-red-600 text-sm mt-2"><?php echo e($message); ?></p> <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                         </div>
 
                         <button type="submit"
                             class="w-full px-6 py-3 text-white transition-colors duration-300 rounded-lg bg-primary hover:bg-primary">
-                            {{ __('contact.submit') }}
+                            <?php echo e(__('contact.submit')); ?>
+
                         </button>
                     </form>
                 </div>
@@ -223,11 +264,13 @@ $seo = \App\Http\Controllers\SeoController::index('home');
 <section class="py-12 bg-base">
     <div class="container px-6 mx-auto max-w-7xl">
         <div class="overflow-hidden shadow-lg rounded-2xl h-80">
-            {!! Setting()->google_map_embed ?? '' !!}
+            <?php echo Setting()->google_map_embed ?? ''; ?>
+
         </div>
     </div>
 </section>
 
 
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.front.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Work\corpintech\doctor-mai\resources\views/front/contact/index.blade.php ENDPATH**/ ?>

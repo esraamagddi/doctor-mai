@@ -1,9 +1,9 @@
-@php
+<?php
 $curentLanguage = clanguage();
 $activeLocale = activeLangauge(); // بيرجع 'ar' أو 'en'
 $toggleTo = $activeLocale === 'ar' ? 'en' : 'ar'; // اللغة اللي هنحوّل ليها
 $toggleText = $activeLocale === 'ar' ? 'EN' : 'AR'; // النص الظاهر على الزر
-@endphp
+?>
 
 <!-- Transparent Header - Fully Responsive -->
 <header
@@ -11,7 +11,7 @@ $toggleText = $activeLocale === 'ar' ? 'EN' : 'AR'; // النص الظاهر ع�
   <nav
     class="flex items-center justify-between p-4 sm:px-10 lg:px-20 xl:px-40 lg:gap-10 sm:py-6 md:py-8 lg:py-10">
     <!-- Logo - Responsive Sizing -->
-    <a href="{{ route((session('front_locale') ?? app()->getLocale()).'.home') }}"
+    <a href="<?php echo e(route((session('front_locale') ?? app()->getLocale()).'.home')); ?>"
       class="text-base font-extrabold transition-transform duration-300 md:text-lg lg:text-xl xl:text-xl 2xl:text-3xl">
       <span class="text-primary">Dr. Mai</span>
       <span class="text-primary">El-Hakim</span>
@@ -19,30 +19,31 @@ $toggleText = $activeLocale === 'ar' ? 'EN' : 'AR'; // النص الظاهر ع�
 
     <!-- Desktop Menu - Hidden on mobile/tablet -->
     <ul class="items-center hidden gap-4 lg:flex xl:gap-6">
-      @foreach (getNavbar() as $key => $record)
+      <?php $__currentLoopData = getNavbar(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
       <li>
         <a
-          href="{{ route( (session('front_locale') ?? app()->getLocale()) . '.' . $record->slug ) }}"
+          href="<?php echo e(route( (session('front_locale') ?? app()->getLocale()) . '.' . $record->slug )); ?>"
           class="px-3 py-2 text-sm font-medium text-white transition-all duration-300 transform menu-link active xl:px-4 xl:py-2 xl:!text-primary hover:bg-white/10 hover:text-white hover:-translate-y-1">
-          {{ $record->title[$activeLocale] ?? '' }}
+          <?php echo e($record->title[$activeLocale] ?? ''); ?>
+
         </a>
       </li>
-      @endforeach
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </ul>
 
     <!-- Desktop Language Button and CTA -->
     <div class="items-center hidden gap-4 lg:flex">
-      <a href="{{ route('language.switch', $toggleTo) }}"
+      <a href="<?php echo e(route('language.switch', $toggleTo)); ?>"
         class="flex items-center gap-2 text-sm font-medium text-primary cursor-pointer md:text-lg">
         AR
         <img src="https://flagcdn.com/sa.svg" alt="Arabic" class="object-cover w-5 h-3 sm:w-6 sm:h-4" />
       </a>
 
-      <a href="{{ route( (session('front_locale') ?? app()->getLocale()) . '.' . 'appointment' ) }}"
+      <a href="<?php echo e(route( (session('front_locale') ?? app()->getLocale()) . '.' . 'appointment' )); ?>"
         class="px-4 py-2 text-base font-semibold text-white transition-colors duration-300 bg-primary rounded-full border border-gray-300 lg:text-sm xl:px-6 xl:py-3 hover:bg-fff4eb hover:text-white"
         aria-label="Book Appointment">
-        <span class="hidden xl:inline"> {{ __('buttons.book appointment') }}</span>
-        <span class="xl:hidden">{{ __('buttons.book appointment') }}</span>
+        <span class="hidden xl:inline"> <?php echo e(__('buttons.book appointment')); ?></span>
+        <span class="xl:hidden"><?php echo e(__('buttons.book appointment')); ?></span>
       </a>
     </div>
 
@@ -72,12 +73,13 @@ $toggleText = $activeLocale === 'ar' ? 'EN' : 'AR'; // النص الظاهر ع�
   <div
     id="mobile-menu"
     class="hidden px-4 py-4 space-y-3 border-t lg:hidden bg-black/20 backdrop-blur-sm border-white/10 sm:px-6 sm:py-6 sm:space-y-4 animate-fade-in">
-    @foreach (getNavbar() as $key => $record)
+    <?php $__currentLoopData = getNavbar(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
     <a
-      href="{{ route( (session('front_locale') ?? app()->getLocale()) . '.' . $record->slug ) }}"
+      href="<?php echo e(route( (session('front_locale') ?? app()->getLocale()) . '.' . $record->slug )); ?>"
       class="block px-3 py-2 font-medium text-primary transition-all duration-300 rounded-lg sm:py-3 sm:px-4 sm:text-lg hover:bg-white/10 hover:text-white sm:rounded-xl hover:scale-105 touch-manipulation">
-      {{ $record->title[$activeLocale] ?? '' }}
+      <?php echo e($record->title[$activeLocale] ?? ''); ?>
+
     </a>
-    @endforeach
+    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
   </div>
-</header>
+</header><?php /**PATH D:\Work\corpintech\doctor-mai\resources\views/layouts/front/navbar.blade.php ENDPATH**/ ?>

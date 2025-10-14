@@ -1113,11 +1113,11 @@ video {
 }
 
 .bg-accent\/10 {
-    background-color: #65bdc21a
+    background-color: #c281651a
 }
 
 .bg-accent\/20 {
-    background-color: #65bdc233
+    background-color: #c2976533
 }
 
 .bg-amber-800 {
@@ -2200,7 +2200,7 @@ select:focus {
 }
 
 .group:hover .group-hover\:bg-accent\/20 {
-    background-color: #65bdc233
+    background-color: #c2976533
 }
 
 .group:hover .group-hover\:bg-primary\/20 {

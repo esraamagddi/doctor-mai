@@ -1113,11 +1113,11 @@ video {
 }
 
 .bg-accent\/10 {
-    background-color: #65bdc21a
+    background-color: #c281651a
 }
 
 .bg-accent\/20 {
-    background-color: #65bdc233
+    background-color: #c2976533
 }
 
 .bg-amber-800 {
@@ -1791,10 +1791,10 @@ video {
 }
 
 :root {
-    --primary: #7c928f;
-    --primary-light: #a8b9b6;
-    --primary-dark: #5b6e6b;
-    --accent: #65bdc2
+    --primary: #663130;
+    --primary-light: #663130;
+    --primary-dark: #663130;
+    --accent: #663130
 }
 
 * {
@@ -2197,7 +2197,7 @@ select:focus {
 }
 
 .group:hover .group-hover\:bg-accent\/20 {
-    background-color: #65bdc233
+    background-color: #c2976533
 }
 
 .group:hover .group-hover\:bg-primary\/20 {
@@ -2509,4 +2509,402 @@ article:hover .backdrop-blur-sm {
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+/* Services Swiper Styles */
+.home-services-swiper-container {
+    width: 100%;
+    position: relative;
+    padding: 20px 0 60px;
+}
+
+.home-services-swiper {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+}
+
+.home-services-swiper .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+.home-services-swiper .swiper-slide {
+    height: auto;
+    display: flex;
+}
+
+.service-card {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 24px 24px 0 0;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-image {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.05);
+}
+
+.service-content {
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex: 1;
+}
+
+/* RTL Support */
+html[dir="rtl"] .service-content {
+    flex-direction: row-reverse;
+}
+
+html[dir="ltr"] .service-content {
+    flex-direction: row;
+}
+
+.service-text {
+    flex: 1;
+    min-width: 0;
+}
+
+html[dir="rtl"] .service-text {
+    text-align: right;
+}
+
+html[dir="ltr"] .service-text {
+    text-align: left;
+}
+
+.service-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.service-description {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #666;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.service-number {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #333;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+/* Pagination */
+.home-services-pagination {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+    padding-top: 30px;
+}
+
+.home-services-pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: #000;
+    opacity: 0.3;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.home-services-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Navigation Arrows */
+.home-services-navigation {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.home-services-button-prev,
+.home-services-button-next {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    pointer-events: auto;
+}
+
+.home-services-button-prev:hover,
+.home-services-button-next:hover {
+    background: #f8f8f8;
+    transform: scale(1.1);
+}
+
+.home-services-button-prev.swiper-button-disabled,
+.home-services-button-next.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .home-services-navigation {
+        display: none;
+    }
+
+    .service-number {
+        font-size: 3rem;
+    }
+
+    .service-title {
+        font-size: 1.25rem;
+    }
+
+    .service-content {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .service-image {
+        height: 250px;
+    }
+}
+
+/* Services Swiper - Fixed Styles */
+.services-swiper-container {
+    width: 100%;
+    position: relative;
+    padding: 20px 0 80px;
+}
+
+.services-swiper {
+    width: 100%;
+    height: auto;
+    overflow: visible !important;
+}
+
+.services-swiper .swiper-wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+.services-swiper .swiper-slide {
+    height: auto;
+    display: flex;
+}
+
+.service-card {
+    width: 100%;
+    height: 100%;
+    background: white;
+    border-radius: 24px 24px 0 0;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.service-image {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover .service-image img {
+    transform: scale(1.05);
+}
+
+.service-content {
+    padding: 24px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    flex: 1;
+}
+
+/* RTL Support */
+html[dir="rtl"] .service-content {
+    flex-direction: row-reverse;
+}
+
+html[dir="ltr"] .service-content {
+    flex-direction: row;
+}
+
+.service-text {
+    flex: 1;
+    min-width: 0;
+}
+
+html[dir="rtl"] .service-text {
+    text-align: right;
+}
+
+html[dir="ltr"] .service-text {
+    text-align: left;
+}
+
+.service-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.service-description {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: #666;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.service-number {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #333;
+    flex-shrink: 0;
+    opacity: 0.7;
+}
+
+/* Pagination - Fixed */
+.services-pagination {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 8px;
+}
+
+.services-pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background: #000;
+    opacity: 0.3;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.services-pagination .swiper-pagination-bullet-active {
+    opacity: 1;
+    transform: scale(1.2);
+}
+
+/* Navigation Arrows */
+.services-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 10;
+}
+
+.services-button-prev,
+.services-button-next {
+    width: 50px;
+    height: 50px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.services-button-prev:hover,
+.services-button-next:hover {
+    background: #f8f8f8;
+    transform: scale(1.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .services-navigation {
+        display: none;
+    }
+
+    .service-number {
+        font-size: 3rem;
+    }
+
+    .service-title {
+        font-size: 1.25rem;
+    }
+
+    .service-content {
+        padding: 16px;
+        gap: 12px;
+    }
+
+    .service-image {
+        height: 250px;
+    }
 }

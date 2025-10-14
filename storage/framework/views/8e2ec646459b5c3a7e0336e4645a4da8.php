@@ -1,22 +1,20 @@
-@extends('layouts.front.app')
+<?php $__env->startSection('title'); ?><?php echo e($video->title[app()->getLocale()] ?? ''); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('description'); ?><?php echo e($video->description[app()->getLocale()] ?? ''); ?><?php $__env->stopSection(); ?>
 
-@section('title'){{ $video->title[app()->getLocale()] ?? '' }}@endsection
-@section('description'){{ $video->description[app()->getLocale()] ?? '' }}@endsection
+<?php $__env->startSection('og_title'); ?><?php echo e($video->title[app()->getLocale()] ?? ''); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('og_description'); ?><?php echo e($video->description[app()->getLocale()] ?? ''); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('og_url'); ?><?php echo e(route(app()->getLocale() . '.video.details', $video->id)); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('og_image'); ?><?php echo e($video->image ? asset('storage/' . $video->image) : ''); ?><?php $__env->stopSection(); ?>
 
-@section('og_title'){{ $video->title[app()->getLocale()] ?? '' }}@endsection
-@section('og_description'){{ $video->description[app()->getLocale()] ?? '' }}@endsection
-@section('og_url'){{ route(app()->getLocale() . '.video.details', $video->id) }}@endsection
-@section('og_image'){{ $video->image ? asset('storage/' . $video->image) : '' }}@endsection
+<?php $__env->startSection('twitter_image'); ?><?php echo e($video->image ? asset('storage/' . $video->image) : ''); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('twitter_title'); ?><?php echo e($video->title[app()->getLocale()] ?? ''); ?><?php $__env->stopSection(); ?>
+<?php $__env->startSection('twitter_description'); ?><?php echo e($video->description[app()->getLocale()] ?? ''); ?><?php $__env->stopSection(); ?>
 
-@section('twitter_image'){{ $video->image ? asset('storage/' . $video->image) : '' }}@endsection
-@section('twitter_title'){{ $video->title[app()->getLocale()] ?? '' }}@endsection
-@section('twitter_description'){{ $video->description[app()->getLocale()] ?? '' }}@endsection
+<?php $__env->startSection('canonical'); ?><?php echo e(route(app()->getLocale() . '.video.details', $video->id)); ?><?php $__env->stopSection(); ?>
 
-@section('canonical'){{ route(app()->getLocale() . '.video.details', $video->id) }}@endsection
+<?php $__env->startSection('meta'); ?><?php $__env->stopSection(); ?>
 
-@section('meta')@endsection
-
-@section('css')
+<?php $__env->startSection('css'); ?>
 <link rel="stylesheet" href="/assets/css/blog.css?v=5">
 <style>
     iframe {
@@ -25,35 +23,35 @@
         aspect-ratio: 16/9;
     }
 </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('content')
+<?php $__env->startSection('content'); ?>
 
-{{-- Schema.org Organization --}}
+
 <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Organization",
-        "name": "{{ Setting()->site_name[app()->getLocale()] ?? '' }}",
-        "url": "{{ url('/') }}",
-        "logo": "{{ asset('storage/' . Setting()->logo_light) }}",
-        "description": "{{ Setting()->site_description[app()->getLocale()] ?? '' }}"
+        "name": "<?php echo e(Setting()->site_name[app()->getLocale()] ?? ''); ?>",
+        "url": "<?php echo e(url('/')); ?>",
+        "logo": "<?php echo e(asset('storage/' . Setting()->logo_light)); ?>",
+        "description": "<?php echo e(Setting()->site_description[app()->getLocale()] ?? ''); ?>"
     }
 </script>
 
-{{-- Schema.org Website --}}
+
 <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "url": "{{ url('/') }}",
-        "name": "{{ Setting()->site_name[app()->getLocale()] ?? '' }}",
+        "url": "<?php echo e(url('/')); ?>",
+        "name": "<?php echo e(Setting()->site_name[app()->getLocale()] ?? ''); ?>",
         "publisher": {
             "@type": "Organization",
-            "name": "{{ Setting()->site_name[app()->getLocale()] ?? '' }}",
+            "name": "<?php echo e(Setting()->site_name[app()->getLocale()] ?? ''); ?>",
             "logo": {
                 "@type": "ImageObject",
-                "url": "{{ asset('storage/' . Setting()->logo_light) }}"
+                "url": "<?php echo e(asset('storage/' . Setting()->logo_light)); ?>"
             }
         }
     }
@@ -67,10 +65,11 @@
                     <article class="bg-secondary rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
                         <div class="p-8">
                             <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                                {{ $video->title[app()->getLocale()] ?? '' }}
+                                <?php echo e($video->title[app()->getLocale()] ?? ''); ?>
+
                             </h1>
 
-                            @php
+                            <?php
                             // Extract YouTube video ID
                             $videoId = null;
                             $urlToCheck = $video->embed_code ?? $video->video_url;
@@ -79,43 +78,44 @@
                             preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i', $urlToCheck, $match);
                             $videoId = $match[1] ?? null;
                             }
-                            @endphp
+                            ?>
 
                             <div class="relative aspect-video overflow-hidden bg-gray-900 rounded-xl">
-                                @if($videoId)
+                                <?php if($videoId): ?>
                                 <iframe
-                                    src="https://www.youtube.com/embed/{{ $videoId }}"
-                                    title="{{ $video->title[app()->getLocale()] ?? '' }}"
+                                    src="https://www.youtube.com/embed/<?php echo e($videoId); ?>"
+                                    title="<?php echo e($video->title[app()->getLocale()] ?? ''); ?>"
                                     frameborder="0"
                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     allowfullscreen
                                     class="w-full h-full">
                                 </iframe>
-                                @else
+                                <?php else: ?>
                                 <div class="flex items-center justify-center h-full text-white">
-                                    <p>{{ __('video.no_video_available') }}</p>
+                                    <p><?php echo e(__('video.no_video_available')); ?></p>
                                 </div>
-                                @endif
+                                <?php endif; ?>
                             </div>
 
                             <div class="mt-6">
                                 <p class="text-gray-700 leading-relaxed">
-                                    {{ $video->description[app()->getLocale()] ?? '' }}
+                                    <?php echo e($video->description[app()->getLocale()] ?? ''); ?>
+
                                 </p>
                             </div>
 
                             <div class="mt-8 pt-6 border-t border-gray-200">
-                                @php
+                                <?php
                                 $shareUrl = route(app()->getLocale() . '.video.details', $video->id);
                                 $shareText = $video->title[app()->getLocale()] ?? __('video.watch_this_article');
-                                @endphp
+                                ?>
 
                                 <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                                     <div class="flex items-center gap-3">
-                                        <span class="text-gray-700 font-medium ml-3">{{ __('video.share_article') }}</span>
+                                        <span class="text-gray-700 font-medium ml-3"><?php echo e(__('video.share_article')); ?></span>
 
-                                        {{-- Facebook --}}
-                                        <a href="https://www.facebook.com/sharer/sharer.php?u={{ urlencode($shareUrl) }}" target="_blank"
+                                        
+                                        <a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo e(urlencode($shareUrl)); ?>" target="_blank"
                                             class="flex items-center justify-center w-10 h-10 bg-primary hover:bg-primary text-white rounded-full transition-all duration-200 hover:scale-110 shadow-md hover:shadow-lg">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -125,8 +125,8 @@
                                             </svg>
                                         </a>
 
-                                        {{-- Twitter --}}
-                                        <a href="https://twitter.com/intent/tweet?url={{ urlencode($shareUrl) }}&text={{ urlencode($shareText) }}" target="_blank"
+                                        
+                                        <a href="https://twitter.com/intent/tweet?url=<?php echo e(urlencode($shareUrl)); ?>&text=<?php echo e(urlencode($shareText)); ?>" target="_blank"
                                             class="flex items-center justify-center w-10 h-10 bg-primary hover:bg-primary text-white rounded-full transition-all duration-200 hover:scale-110 shadow-md hover:shadow-lg">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -136,8 +136,8 @@
                                             </svg>
                                         </a>
 
-                                        {{-- LinkedIn --}}
-                                        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ urlencode($shareUrl) }}" target="_blank"
+                                        
+                                        <a href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo e(urlencode($shareUrl)); ?>" target="_blank"
                                             class="flex items-center justify-center w-10 h-10 bg-primary hover:bg-primary text-white rounded-full transition-all duration-200 hover:scale-110 shadow-md hover:shadow-lg">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -161,11 +161,11 @@
 
 <section class="bg-image-overlay container mx-auto px-4 py-4">
     <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold text-primary mb-8 text-center">{{ __('video.related_videos') }}</h2>
+        <h2 class="text-3xl font-bold text-primary mb-8 text-center"><?php echo e(__('video.related_videos')); ?></h2>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            @foreach($relatedvideos as $key => $record)
-            @php
+            <?php $__currentLoopData = $relatedvideos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <?php
             $videoId = null;
             $urlToCheck = $record->embed_code ?? $record->video_url;
 
@@ -180,18 +180,18 @@
             } elseif ($videoId) {
             $coverImage = "https://img.youtube.com/vi/{$videoId}/maxresdefault.jpg";
             }
-            @endphp
+            ?>
 
-            @if($videoId)
-            <a href="{{ route(app()->getLocale() . '.video.details', $record->id) }}" class="block group">
+            <?php if($videoId): ?>
+            <a href="<?php echo e(route(app()->getLocale() . '.video.details', $record->id)); ?>" class="block group">
                 <div class="relative rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white border border-secondary">
                     <div class="relative aspect-video bg-gray-900">
                         <!-- Cover Image -->
                         <img
-                            src="{{ $coverImage }}"
-                            alt="{{ is_array($record->title) ? ($record->title[app()->getLocale()] ?? '') : $record->title }}"
+                            src="<?php echo e($coverImage); ?>"
+                            alt="<?php echo e(is_array($record->title) ? ($record->title[app()->getLocale()] ?? '') : $record->title); ?>"
                             class="w-full h-full object-cover transition-opacity duration-300"
-                            onerror="this.src='https://img.youtube.com/vi/{{ $videoId }}/hqdefault.jpg'">
+                            onerror="this.src='https://img.youtube.com/vi/<?php echo e($videoId); ?>/hqdefault.jpg'">
 
                         <!-- Play Button Overlay -->
                         <div class="absolute inset-0 flex items-center justify-center bg-black/30 transition-all duration-300 group-hover:bg-black/40">
@@ -206,25 +206,29 @@
                     <!-- Content -->
                     <div class="transition-all p-6">
                         <h3 class="mb-2 text-lg font-bold text-primary">
-                            {{ is_array($record->title) ? ($record->title[app()->getLocale()] ?? '') : $record->title }}
+                            <?php echo e(is_array($record->title) ? ($record->title[app()->getLocale()] ?? '') : $record->title); ?>
+
                         </h3>
                         <p class="text-sm text-gray-600 line-clamp-2">
-                            {{ is_array($record->description) ? ($record->description[app()->getLocale()] ?? '') : $record->description }}
+                            <?php echo e(is_array($record->description) ? ($record->description[app()->getLocale()] ?? '') : $record->description); ?>
+
                         </p>
                     </div>
                 </div>
             </a>
-            @endif
-            @endforeach
+            <?php endif; ?>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
 
         <div class="text-center mt-12">
-            <a href="{{ route(app()->getLocale().'.video') }}"
+            <a href="<?php echo e(route(app()->getLocale().'.video')); ?>"
                 class="bg-primary text-white text-center px-8 py-4 text-lg font-semibold hover:bg-primary transition-colors duration-300 inline-block rounded-lg">
-                {{ __('video.view_all_posts') }}
+                <?php echo e(__('video.view_all_posts')); ?>
+
             </a>
         </div>
     </div>
 </section>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.front.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\Work\corpintech\doctor-mai\resources\views/front/video/details.blade.php ENDPATH**/ ?>

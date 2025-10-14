@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function showLoginForm(){
+
       return view('login');   
     }
     public function Login(Request $request){
@@ -17,9 +18,11 @@ class AuthController extends Controller
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
+         dd( $credentials);
 
         // Attempt login
         if (Auth::attempt($credentials)) {
+            
             $request->session()->regenerate();
 
             // Redirect to intended page or home

@@ -10,18 +10,20 @@
     <!-- Header -->
     <div class="mb-16 text-center">
       <h2 class="mb-6 text-4xl font-extrabold leading-tight text-primary md:text-5xl">
-        {{ getLocalized(getSectionHeaders('video')['title']) }}
+        <?php echo e(getLocalized(getSectionHeaders('video')['title'])); ?>
+
       </h2>
       <p class="max-w-2xl mx-auto text-lg text-gray-600">
-        {{ getLocalized(getSectionHeaders('video')['description']) }}
+        <?php echo e(getLocalized(getSectionHeaders('video')['description'])); ?>
+
       </p>
     </div>
 
     <!-- Videos Grid -->
     <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
       <!-- Video Card -->
-      @foreach($videos as $key => $record)
-      @php
+      <?php $__currentLoopData = $videos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+      <?php
       // Extract YouTube video ID - Check embed_code first, then video_url
       $videoId = null;
       $urlToCheck = $record->embed_code ?? $record->video_url;
@@ -38,18 +40,18 @@
       } elseif ($videoId) {
       $coverImage = "https://img.youtube.com/vi/{$videoId}/maxresdefault.jpg";
       }
-      @endphp
+      ?>
 
-      @if($videoId)
-      <a href="{{ route(app()->getLocale() . '.video.details', $record->id) }}" class="block group">
+      <?php if($videoId): ?>
+      <a href="<?php echo e(route(app()->getLocale() . '.video.details', $record->id)); ?>" class="block group">
         <div class="relative rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 bg-white border border-secondary">
           <div class="relative aspect-video bg-gray-900">
             <!-- Cover Image -->
             <img
-              src="{{ $coverImage }}"
-              alt="{{ is_array($record->title) ? ($record->title[app()->getLocale()] ?? '') : $record->title }}"
+              src="<?php echo e($coverImage); ?>"
+              alt="<?php echo e(is_array($record->title) ? ($record->title[app()->getLocale()] ?? '') : $record->title); ?>"
               class="w-full h-full object-cover transition-opacity duration-300"
-              onerror="this.src='https://img.youtube.com/vi/{{ $videoId }}/hqdefault.jpg'">
+              onerror="this.src='https://img.youtube.com/vi/<?php echo e($videoId); ?>/hqdefault.jpg'">
 
             <!-- Play Button Overlay -->
             <div class="absolute inset-0 flex items-center justify-center bg-black/30 transition-all duration-300 group-hover:bg-black/40">
@@ -64,25 +66,28 @@
           <!-- Content -->
           <div class="transition-all p-6">
             <h3 class="mb-2 text-lg font-bold text-primary">
-              {{ is_array($record->title) ? ($record->title[app()->getLocale()] ?? '') : $record->title }}
+              <?php echo e(is_array($record->title) ? ($record->title[app()->getLocale()] ?? '') : $record->title); ?>
+
             </h3>
             <p class="text-sm text-gray-600 line-clamp-2">
-              {{ is_array($record->description) ? ($record->description[app()->getLocale()] ?? '') : $record->description }}
+              <?php echo e(is_array($record->description) ? ($record->description[app()->getLocale()] ?? '') : $record->description); ?>
+
             </p>
           </div>
         </div>
       </a>
 
-      @endif
-      @endforeach
+      <?php endif; ?>
+      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
 
     <!-- CTA Button -->
     <div class="mt-16 text-center">
-      <a href="{{ route( (session('front_locale') ?? app()->getLocale()) . '.' . 'appointment' ) }}"
+      <a href="<?php echo e(route( (session('front_locale') ?? app()->getLocale()) . '.' . 'appointment' )); ?>"
         class="px-8 py-4 font-semibold text-white transition-all duration-300 rounded-full shadow-lg bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary">
-        {{ __('buttons.book your consultation') }}
+        <?php echo e(__('buttons.book your consultation')); ?>
+
       </a>
     </div>
   </div>
-</section>
+</section><?php /**PATH D:\Work\corpintech\doctor-mai\resources\views/front/home/video.blade.php ENDPATH**/ ?>

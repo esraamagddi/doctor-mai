@@ -3,23 +3,25 @@
         <!-- Header -->
         <div class="mb-16 text-center">
             <h2 class="mt-6 mb-4 text-4xl font-extrabold sm:text-5xl text-black ">
-                {{ getLocalized(getSectionHeaders('photos')['title']) }}
+                <?php echo e(getLocalized(getSectionHeaders('photos')['title'])); ?>
+
             </h2>
             <p class="max-w-2xl mx-auto text-base text-gray-600">
-                {{ getLocalized(getSectionHeaders('photos')['description']) }}
+                <?php echo e(getLocalized(getSectionHeaders('photos')['description'])); ?>
+
             </p>
         </div>
 
         <!-- Gallery Grid -->
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            @foreach($photos as $key => $record)
+            <?php $__currentLoopData = $photos; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $record): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
             <!-- Card -->
             <div
                 class="relative group rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
                 <!-- ✅ FIXED: Changed from getLocalized() to asset() -->
-                <img src="{{ asset('storage/' . $record->image) }}"
-                    alt="{{ getLocalized($record->title) ?? 'Gallery Image ' . ($key + 1) }}"
+                <img src="<?php echo e(asset('storage/' . $record->image)); ?>"
+                    alt="<?php echo e(getLocalized($record->title) ?? 'Gallery Image ' . ($key + 1)); ?>"
                     class="object-cover w-full h-56 sm:h-72 duration-700 group-hover:scale-110"
                     onerror="" />
                 <div
@@ -27,11 +29,11 @@
                 </div>
                 <div
                     class="absolute bottom-4 left-4 right-4 transform translate-y-[200%] group-hover:translate-y-0 transition duration-500">
-                    <h3 class="text-lg font-bold text-white">{{ getLocalized($record->title) }}</h3>
+                    <h3 class="text-lg font-bold text-white"><?php echo e(getLocalized($record->title)); ?></h3>
                 </div>
             </div>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
         </div>
     </div>
-</section>
+</section><?php /**PATH D:\Work\corpintech\doctor-mai\resources\views/front/home/gallery.blade.php ENDPATH**/ ?>

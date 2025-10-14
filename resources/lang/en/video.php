@@ -5,4 +5,5 @@ return [
     'related_articles'   => 'Related videos',
         'read_more'       => 'Read More',
     'view_all_posts'  => 'View All Videos',
+    'related_videos' => 'related videos'
 ];
