@@ -81,7 +81,7 @@ $seo = \App\Http\Controllers\SeoController::index('home');
 
                 <div class="space-y-6">
                     <!-- Address -->
-                    <div class="flex items-start">
+                    <div class="flex items-start gap-4">
                         <div class="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-4 rounded-full bg-base">
                             <svg class="w-6 h-6 text-dprimary " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -95,13 +95,13 @@ $seo = \App\Http\Controllers\SeoController::index('home');
                                 {{ __('contact.our_location') }}
                             </h3>
                             <p class="text-gray-600">
-                                NewDerma Clinics, Al Madinah Al Munawwarah, Saudi Arabia
+                               {{ Setting()->address[app()->getLocale()] ?? '' }}
                             </p>
                         </div>
                     </div>
 
                     <!-- Phone -->
-                    <div class="flex items-start">
+                    <div class="flex items-start gap-4">
                         <div class="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-4 rounded-full bg-base">
                             <svg class="w-6 h-6 text-dprimary " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -113,12 +113,12 @@ $seo = \App\Http\Controllers\SeoController::index('home');
                                 {{ __('contact.phone_label') }}
 
                             </h3>
-                            <p class="text-gray-600">+966 56 463 7050</p>
+                            <p class="text-gray-600">{{ Setting()->phones ?? '' }}</p>
                         </div>
                     </div>
 
                     <!-- Email -->
-                    <div class="flex items-start">
+                    <div class="flex items-start gap-4">
                         <div class="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-4 rounded-full bg-base">
                             <svg class="w-6 h-6 text-dprimary " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -134,7 +134,7 @@ $seo = \App\Http\Controllers\SeoController::index('home');
                     </div>
 
                     <!-- Hours -->
-                    <div class="flex items-start">
+                    <div class="flex items-start gap-4">
                         <div class="flex items-center justify-center flex-shrink-0 w-12 h-12 mr-4 rounded-full bg-base">
                             <svg class="w-6 h-6 text-dprimary " fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

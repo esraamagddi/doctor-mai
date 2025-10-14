@@ -22,7 +22,7 @@ $button2Text = getLocalized($record->button2_text) ?? null;
 
         <!-- Hero Content -->
         <div class="w-full max-w-md text-left lg:hero-content sm:max-w-md xl:max-w-2xl pb-10 ">
-            <img src="<?php echo e(asset('storage/' . $record->image)); ?>" alt="Dr. Mai El-Hakim"
+            <img src="<?php echo e(asset('storage/' . $record->image)); ?>" alt=" <?php echo e(getLocalized($record->title) ?? ''); ?>"
                 class="md:hidden object-cover object-center w-full h-full mb-5" />
             <!-- Title -->
             <h1 class="mb-4 text-4xl font-extrabold leading-tight text-left rtl:text-right text-black md:text-5xl xl:text-6xl sm:mb-6">
